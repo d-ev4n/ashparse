@@ -2,8 +2,8 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: '/api',
-  timeout: 15000,
+  baseURL: 'https://ashparse.onrender.com/api',
+  timeout: 60000,
   headers: {
     'Content-Type': 'application/json',
   },
