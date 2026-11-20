@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-purple: var(--purple);
+  --color-purple-soft: var(--purple-soft);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+}
+
+:root {
+  color-scheme: light;
+
+  --background: #f5f7fb;
+  --foreground: #202638;
+  --surface: #ffffff;
+  --surface-alt: #f8f9fd;
+  --muted: #edf0f7;
+  --muted-foreground: #778096;
+  --border: #e5e9f2;
+
+  --green: #209b68;
+  --green-soft: #e1f7ed;
+
+  --purple: #8754d6;
+  --purple-soft: #f0e8ff;
+
+  --blue: #347fe8;
+  --blue-soft: #e5efff;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #111522;
+  --foreground: #edf0fa;
+  --surface: #191f30;
+  --surface-alt: #1e2639;
+  --muted: #293147;
+  --muted-foreground: #9aa5bd;
+  --border: #30394f;
+
+  --green: #35cf91;
+  --green-soft: #173e35;
+
+  --purple: #ae82ff;
+  --purple-soft: #35264e;
+
+  --blue: #66a5ff;
+  --blue-soft: #20395e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--purple-soft);
+  color: var(--foreground);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-foreground) transparent;
+}
+
+.card-surface {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 5px 22px rgba(30, 45, 80, 0.035);
+}
+
+.dark .card-surface {
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.12);
+}
+
+.input-field {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 14px;
+  background: var(--surface-alt);
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.input-field::placeholder {
+  color: var(--muted-foreground);
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 11px;
+  padding: 10px 16px;
+  background: var(--green);
+  color: white;
+  font-weight: 650;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.primary-button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  padding: 10px 14px;
+  background: var(--surface);
+  color: var(--foreground);
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.secondary-button:hover {
+  background: var(--muted);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 13px;
+  border-radius: 12px;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  font-weight: 550;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.nav-link.active {
+  background: linear-gradient(105deg, var(--green-soft), var(--blue-soft));
+  color: var(--green);
+  font-weight: 700;
+}
+
+.dark .nav-link.active {
+  background: linear-gradient(105deg, #173e35, #20395e);
+  color: #67e2ad;
+}
+
+.table-row:hover {
+  background: var(--surface-alt);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s ease both;
+}
